@@ -2,20 +2,18 @@
 #include <cmath>
 using namespace std;
 
-// Function to check if a number is zero (handles floating-point precision issues)
 bool isZero(float num, float epsilon = 1e-6) {
     return fabs(num) < epsilon; // Check if num is very close to 0
 }
 
-// Function template for versatile calculations
-template <typename T>
-T calculate(T num1, T num2, char op) {
+template <typename Temp>
+Temp calculate(Temp num1, Temp num2, char op) {
     switch (op) {
         case '+': return num1 + num2;
         case '-': return num1 - num2;
         case '*': return num1 * num2;
         case '/':
-            if (isZero(static_cast<float>(num2))) { // Ensure zero is checked correctly
+            if (isZero(static_cast<float>(num2))) {
                 return 0;
             }
             return num1 / num2;
